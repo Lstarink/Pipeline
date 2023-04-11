@@ -5,6 +5,8 @@ import test_CICFilter
 import test_PDM
 import test_movingFFT
 import test_FIRFilter
+import test_goertzel
+import test_IQ
 
 
 def RunAllTests():
@@ -23,6 +25,12 @@ def RunAllTests():
 
     fir = unittest.TestLoader().loadTestsFromModule(test_FIRFilter)
     unittest.TextTestRunner(verbosity=verb).run(fir)
+
+    # goertzel = unittest.TestLoader().loadTestsFromModule(test_goertzel)
+    # unittest.TextTestRunner(verbosity=verb).run(goertzel)
+
+    iq_filter = unittest.TestLoader().loadTestsFromModule(test_IQ)
+    unittest.TextTestRunner(verbosity=verb).run(iq_filter)
 
 
 if __name__ == "__main__":

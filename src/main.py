@@ -68,7 +68,7 @@ show_pulse3 = np.zeros(len(t))
 for n, x in enumerate(signal):
     pulse_detected = pipeline.Tick(x)
 
-    if t[n] in real_pulse_time_stamps1 and t[n] > 0.07:
+    if t[n-200] in real_pulse_time_stamps1 and t[n] > 0.07:
         pipeline.fft.plotting = False
 
     if pulse_detected is not None:
@@ -95,26 +95,26 @@ for k in range(3):
             pulse_detected_timestamp[k].append(t[n])
 
 
-# plt.figure()
-# plt.plot(t, pulse_detected_vector[0])
-# plt.plot(t, show_pulse1)
-# plt.show()
-#
-# plt.figure()
-# plt.plot(t, pulse_detected_vector[1])
-# plt.plot(t, show_pulse2)
-# plt.show()
-#
-# plt.figure()
-# plt.plot(t, pulse_detected_vector[2])
-# plt.plot(t, show_pulse3)
-# plt.show()
-#
-# plt.figure()
-# plt.plot(t, show_pulse1)
-# plt.plot(t, show_pulse2)
-# plt.plot(t, show_pulse3)
-# plt.show()
+plt.figure()
+plt.plot(t, pulse_detected_vector[0])
+plt.plot(t, show_pulse1)
+plt.show()
+
+plt.figure()
+plt.plot(t, pulse_detected_vector[1])
+plt.plot(t, show_pulse2)
+plt.show()
+
+plt.figure()
+plt.plot(t, pulse_detected_vector[2])
+plt.plot(t, show_pulse3)
+plt.show()
+
+plt.figure()
+plt.plot(t, show_pulse1)
+plt.plot(t, show_pulse2)
+plt.plot(t, show_pulse3)
+plt.show()
 
 print(pulse_detected_timestamp)
 pulse_real_timestamp = [real_pulse_time_stamps1, real_pulse_time_stamps2, real_pulse_time_stamps3]
@@ -130,4 +130,5 @@ plt.show()
 
 print(time_difference)
 print(np.mean(time_difference))
+print()
 print(np.var(time_difference))
